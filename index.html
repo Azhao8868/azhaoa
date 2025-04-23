@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>报价计算工具</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>报价计算工具</h1>
+        
+        <div class="tabs">
+            <button class="tab-button active" onclick="openTab('tab1')">无动力辊道机</button>
+            <button class="tab-button" onclick="openTab('tab2')">多楔带辊道机</button>
+            <button class="tab-button" onclick="openTab('tab3')">双链辊道机</button>
+            <button class="tab-button" onclick="openTab('tab4')">链条机</button>
+            <button class="tab-button" onclick="openTab('tab5')">皮带输送机</button>
+            <button class="tab-button" onclick="openTab('tab6')">弯道机</button>
+            <button class="tab-button" onclick="openTab('tab7')">辅助工具</button>
+        </div>
+        
+        <div id="tab1" class="tab-content active">
+            <h2>无动力辊道机报价计算</h2>
+            <div class="flex-container">
+                <div class="price-table-container">
+                    <table id="priceTable">
+                        <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>名称</th>
+                                <th>数量</th>
+                                <th>价格</th>
+                                <th>总计</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>机架</td>
+                                <td><input type="number" step="0.001" value="0.000" id="quantity1" onchange="calculateTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="65.00" id="price1" onchange="calculateTotal()" class="no-spinner"></td>
+                                <td><span id="total1">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>辊筒</td>
+                                <td><input type="number" step="0.001" value="0.000" id="quantity2" onchange="calculateTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="0.00" id="price2" onchange="calculateTotal()" class="no-spinner"></td>
+                                <td><span id="total2">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>支腿</td>
+                                <td><input type="number" step="0.001" value="0.000" id="quantity3" onchange="calculateTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="130.00" id="price3" onchange="calculateTotal()" class="no-spinner"></td>
+                                <td><span id="total3">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>护栏</td>
+                                <td><input type="number" step="0.001" value="0.000" id="quantity4" onchange="calculateTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="20.00" id="price4" onchange="calculateTotal()" class="no-spinner"></td>
+                                <td><span id="total4">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>扣板</td>
+                                <td><input type="number" step="0.001" value="0.000" id="quantity5" onchange="calculateTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="10.00" id="price5" onchange="calculateTotal()" class="no-spinner"></td>
+                                <td><span id="total5">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>下拉杆</td>
+                                <td><input type="number" step="0.001" value="0.000" id="quantity6" onchange="calculateTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="8.00" id="price6" onchange="calculateTotal()" class="no-spinner"></td>
+                                <td><span id="total6">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>标准件</td>
+                                <td><input type="number" step="0.001" value="1.000" id="quantity7" onchange="calculateTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="20.00" id="price7" onchange="calculateTotal()" class="no-spinner"></td>
+                                <td><span id="total7">20.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>工费</td>
+                                <td><input type="number" step="0.001" value="1.000" id="quantity8" onchange="calculateTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="50.00" id="price8" onchange="calculateTotal()" class="no-spinner"></td>
+                                <td><span id="total8">50.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>其他</td>
+                                <td><input type="number" step="0.001" value="0.000" id="quantity9" onchange="calculateTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="0.00" id="price9" onchange="calculateTotal()" class="no-spinner"></td>
+                                <td><span id="total9">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>其他</td>
+                                <td><input type="number" step="0.001" value="0.000" id="quantity10" onchange="calculateTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="0.00" id="price10" onchange="calculateTotal()" class="no-spinner"></td>
+                                <td><span id="total10">0.000</span></td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>11</td>
+                                <td>合计</td>
+                                <td></td>
+                                <td></td>
+                                <td><span id="subtotal">70.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>12</td>
+                                <td>最终报价</td>
+                                <td></td>
+                                <td><input type="number" step="0.01" value="1.30" id="finalRate" onchange="calculateTotal()" class="no-spinner"></td>
+                                <td><span id="finalTotal">91.000</span></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                
+                <div class="accessories-calculator">
+                    <h3>辅件计算器</h3>
+                    <div class="input-group">
+                        <label>无动力辊道机的长度 (mm):</label>
+                        <input type="number" id="rollerLength" onchange="calculateAccessories()" class="no-spinner">
+                    </div>
+                    <div class="input-group">
+                        <label>无动力辊道机的间距 (mm):</label>
+                        <input type="number" id="rollerSpacing" value="100" onchange="calculateAccessories()" class="no-spinner">
+                    </div>
+                    <div class="results">
+                        <div class="result-item">
+                            <label>需要的机架长度:</label>
+                            <input type="number" id="frameLength" readonly>
+                        </div>
+                        <div class="result-item">
+                            <label>需要的辊筒数量:</label>
+                            <input type="number" id="rollerCount" readonly>
+                        </div>
+                        <div class="result-item">
+                            <label>需要的支腿数量:</label>
+                            <input type="number" id="legCount" readonly>
+                        </div>
+                    </div>
+                    <div class="apply-button-container">
+                        <button id="applyToTable" onclick="applyToTable()">应用到报价表</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="tab2" class="tab-content">
+            <h2>多楔带辊道机报价计算</h2>
+            <div class="flex-container">
+                <div class="price-table-container">
+                    <table id="multiVBeltTable">
+                        <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>名称</th>
+                                <th>数量</th>
+                                <th>价格</th>
+                                <th>总计</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>机架</td>
+                                <td><input type="number" step="0.001" value="0.000" id="vbelt_quantity1" onchange="calculateVBeltTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="65.00" id="vbelt_price1" onchange="calculateVBeltTotal()" class="no-spinner"></td>
+                                <td><span id="vbelt_total1">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>辊筒</td>
+                                <td><input type="number" step="0.001" value="0.000" id="vbelt_quantity2" onchange="calculateVBeltTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="0.00" id="vbelt_price2" onchange="calculateVBeltTotal()" class="no-spinner"></td>
+                                <td><span id="vbelt_total2">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>支腿</td>
+                                <td><input type="number" step="0.001" value="0.000" id="vbelt_quantity3" onchange="calculateVBeltTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="130.00" id="vbelt_price3" onchange="calculateVBeltTotal()" class="no-spinner"></td>
+                                <td><span id="vbelt_total3">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>链罩</td>
+                                <td><input type="number" step="0.001" value="0.000" id="vbelt_quantity4" onchange="calculateVBeltTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="45.00" id="vbelt_price4" onchange="calculateVBeltTotal()" class="no-spinner"></td>
+                                <td><span id="vbelt_total4">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>驱动架</td>
+                                <td><input type="number" step="0.001" value="0.000" id="vbelt_quantity5" onchange="calculateVBeltTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="200.00" id="vbelt_price5" onchange="calculateVBeltTotal()" class="no-spinner"></td>
+                                <td><span id="vbelt_total5">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>护栏</td>
+                                <td><input type="number" step="0.001" value="0.000" id="vbelt_quantity6" onchange="calculateVBeltTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="50.00" id="vbelt_price6" onchange="calculateVBeltTotal()" class="no-spinner"></td>
+                                <td><span id="vbelt_total6">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>电机链轮</td>
+                                <td><input type="number" step="0.001" value="1.000" id="vbelt_quantity7" onchange="calculateVBeltTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="60.00" id="vbelt_price7" onchange="calculateVBeltTotal()" class="no-spinner"></td>
+                                <td><span id="vbelt_total7">60.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>皮带</td>
+                                <td><input type="number" step="0.001" value="0.000" id="vbelt_quantity8" onchange="calculateVBeltTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="10.00" id="vbelt_price8" onchange="calculateVBeltTotal()" class="no-spinner"></td>
+                                <td><span id="vbelt_total8">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>下拉杆</td>
+                                <td><input type="number" step="0.001" value="0.000" id="vbelt_quantity9" onchange="calculateVBeltTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="45.00" id="vbelt_price9" onchange="calculateVBeltTotal()" class="no-spinner"></td>
+                                <td><span id="vbelt_total9">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>标准件</td>
+                                <td><input type="number" step="0.001" value="1.000" id="vbelt_quantity10" onchange="calculateVBeltTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="50.00" id="vbelt_price10" onchange="calculateVBeltTotal()" class="no-spinner"></td>
+                                <td><span id="vbelt_total10">50.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td>工时费</td>
+                                <td><input type="number" step="0.001" value="1.000" id="vbelt_quantity11" onchange="calculateVBeltTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="100.00" id="vbelt_price11" onchange="calculateVBeltTotal()" class="no-spinner"></td>
+                                <td><span id="vbelt_total11">100.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>12</td>
+                                <td>扣板</td>
+                                <td><input type="number" step="0.001" value="0.000" id="vbelt_quantity12" onchange="calculateVBeltTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="10.00" id="vbelt_price12" onchange="calculateVBeltTotal()" class="no-spinner"></td>
+                                <td><span id="vbelt_total12">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>13</td>
+                                <td>其他</td>
+                                <td><input type="number" step="0.001" value="0.000" id="vbelt_quantity13" onchange="calculateVBeltTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="0.00" id="vbelt_price13" onchange="calculateVBeltTotal()" class="no-spinner"></td>
+                                <td><span id="vbelt_total13">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>14</td>
+                                <td>其他</td>
+                                <td><input type="number" step="0.001" value="0.000" id="vbelt_quantity14" onchange="calculateVBeltTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="0.00" id="vbelt_price14" onchange="calculateVBeltTotal()" class="no-spinner"></td>
+                                <td><span id="vbelt_total14">0.000</span></td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>15</td>
+                                <td>合计</td>
+                                <td></td>
+                                <td></td>
+                                <td><span id="vbelt_subtotal">270.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>16</td>
+                                <td>最终报价</td>
+                                <td></td>
+                                <td><input type="number" step="0.01" value="1.32" id="vbelt_finalRate" onchange="calculateVBeltTotal()" class="no-spinner"></td>
+                                <td><span id="vbelt_finalTotal">356.400</span></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                
+                <div class="accessories-calculator">
+                    <h3>辅件计算器</h3>
+                    <div class="input-group">
+                        <label>多楔带辊道机的长度 (mm):</label>
+                        <input type="number" id="vbelt_rollerLength" onchange="calculateVBeltAccessories()" class="no-spinner">
+                    </div>
+                    <div class="input-group">
+                        <label>多楔带辊道机的间距 (mm):</label>
+                        <input type="number" id="vbelt_rollerSpacing" value="100" onchange="calculateVBeltAccessories()" class="no-spinner">
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="vbelt_useElectricRoller" onchange="calculateVBeltAccessories()" checked>
+                        <label for="vbelt_useElectricRoller">采用电滚筒</label>
+                    </div>
+                    <div class="results">
+                        <div class="result-item">
+                            <label>需要的机架长度:</label>
+                            <input type="number" id="vbelt_frameLength" readonly>
+                        </div>
+                        <div class="result-item">
+                            <label>需要的辊筒数量:</label>
+                            <input type="number" id="vbelt_rollerCount" readonly>
+                        </div>
+                        <div class="result-item">
+                            <label>需要的支腿数量:</label>
+                            <input type="number" id="vbelt_legCount" readonly>
+                        </div>
+                        <div class="result-item">
+                            <label>需要的皮带数量:</label>
+                            <input type="number" id="vbelt_beltCount" readonly>
+                        </div>
+                        <div class="result-item">
+                            <label>需要的链罩长度:</label>
+                            <input type="number" id="vbelt_chainCoverLength" readonly>
+                        </div>
+                        <div class="result-item">
+                            <label>需要的护栏长度:</label>
+                            <input type="number" id="vbelt_railLength" readonly>
+                        </div>
+                        <div class="result-item">
+                            <label>需要的扣板数量:</label>
+                            <input type="number" id="vbelt_plateCount" readonly>
+                        </div>
+                    </div>
+                    <div class="apply-button-container">
+                        <button id="vbelt_applyToTable" onclick="applyVBeltToTable()">应用到报价表</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="tab3" class="tab-content">
+            <h2>双链辊道机报价计算</h2>
+            <div class="flex-container">
+                <div class="price-table-container">
+                    <table id="dchainTable">
+                        <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>名称</th>
+                                <th>数量</th>
+                                <th>价格</th>
+                                <th>总计</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>机架</td>
+                                <td><input type="number" step="0.001" value="0.000" id="dchain_quantity1" onchange="calculateDChainTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="65.00" id="dchain_price1" onchange="calculateDChainTotal()" class="no-spinner"></td>
+                                <td><span id="dchain_total1">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>辊筒</td>
+                                <td><input type="number" step="0.001" value="0.000" id="dchain_quantity2" onchange="calculateDChainTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="0.00" id="dchain_price2" onchange="calculateDChainTotal()" class="no-spinner"></td>
+                                <td><span id="dchain_total2">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>支腿</td>
+                                <td><input type="number" step="0.001" value="0.000" id="dchain_quantity3" onchange="calculateDChainTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="130.00" id="dchain_price3" onchange="calculateDChainTotal()" class="no-spinner"></td>
+                                <td><span id="dchain_total3">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>链罩</td>
+                                <td><input type="number" step="0.001" value="0.000" id="dchain_quantity4" onchange="calculateDChainTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="45.00" id="dchain_price4" onchange="calculateDChainTotal()" class="no-spinner"></td>
+                                <td><span id="dchain_total4">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>驱动架</td>
+                                <td><input type="number" step="0.001" value="1.000" id="dchain_quantity5" onchange="calculateDChainTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="200.00" id="dchain_price5" onchange="calculateDChainTotal()" class="no-spinner"></td>
+                                <td><span id="dchain_total5">200.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>护栏</td>
+                                <td><input type="number" step="0.001" value="0.000" id="dchain_quantity6" onchange="calculateDChainTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="50.00" id="dchain_price6" onchange="calculateDChainTotal()" class="no-spinner"></td>
+                                <td><span id="dchain_total6">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>电机链轮</td>
+                                <td><input type="number" step="0.001" value="1.000" id="dchain_quantity7" onchange="calculateDChainTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="60.00" id="dchain_price7" onchange="calculateDChainTotal()" class="no-spinner"></td>
+                                <td><span id="dchain_total7">60.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>链条</td>
+                                <td><input type="number" step="0.001" value="0.000" id="dchain_quantity8" onchange="calculateDChainTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="15.00" id="dchain_price8" onchange="calculateDChainTotal()" class="no-spinner"></td>
+                                <td><span id="dchain_total8">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>下拉杆</td>
+                                <td><input type="number" step="0.001" value="0.000" id="dchain_quantity9" onchange="calculateDChainTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="45.00" id="dchain_price9" onchange="calculateDChainTotal()" class="no-spinner"></td>
+                                <td><span id="dchain_total9">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>标准件</td>
+                                <td><input type="number" step="0.001" value="1.000" id="dchain_quantity10" onchange="calculateDChainTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="50.00" id="dchain_price10" onchange="calculateDChainTotal()" class="no-spinner"></td>
+                                <td><span id="dchain_total10">50.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td>工时费</td>
+                                <td><input type="number" step="0.001" value="1.000" id="dchain_quantity11" onchange="calculateDChainTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="100.00" id="dchain_price11" onchange="calculateDChainTotal()" class="no-spinner"></td>
+                                <td><span id="dchain_total11">100.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>12</td>
+                                <td>扣板</td>
+                                <td><input type="number" step="0.001" value="0.000" id="dchain_quantity12" onchange="calculateDChainTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="0.00" id="dchain_price12" onchange="calculateDChainTotal()" class="no-spinner"></td>
+                                <td><span id="dchain_total12">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>13</td>
+                                <td>其他</td>
+                                <td><input type="number" step="0.001" value="0.000" id="dchain_quantity13" onchange="calculateDChainTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="0.00" id="dchain_price13" onchange="calculateDChainTotal()" class="no-spinner"></td>
+                                <td><span id="dchain_total13">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>14</td>
+                                <td>其他</td>
+                                <td><input type="number" step="0.001" value="0.000" id="dchain_quantity14" onchange="calculateDChainTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="0.00" id="dchain_price14" onchange="calculateDChainTotal()" class="no-spinner"></td>
+                                <td><span id="dchain_total14">0.000</span></td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>15</td>
+                                <td>合计</td>
+                                <td></td>
+                                <td></td>
+                                <td><span id="dchain_subtotal">410.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>16</td>
+                                <td>最终报价</td>
+                                <td></td>
+                                <td><input type="number" step="0.01" value="1.32" id="dchain_finalRate" onchange="calculateDChainTotal()" class="no-spinner"></td>
+                                <td><span id="dchain_finalTotal">541.200</span></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                
+                <div class="accessories-calculator">
+                    <h3>辅件计算器</h3>
+                    <div class="input-group">
+                        <label>双链辊道机的长度 (mm):</label>
+                        <input type="number" id="dchain_rollerLength" onchange="calculateDChainAccessories()" class="no-spinner">
+                    </div>
+                    <div class="input-group">
+                        <label>双链辊道机的间距 (mm):</label>
+                        <input type="number" id="dchain_rollerSpacing" value="100" onchange="calculateDChainAccessories()" class="no-spinner">
+                    </div>
+                    <div class="results">
+                        <div class="result-item">
+                            <label>需要的机架长度:</label>
+                            <input type="number" id="dchain_frameLength" readonly>
+                        </div>
+                        <div class="result-item">
+                            <label>需要的辊筒数量:</label>
+                            <input type="number" id="dchain_rollerCount" readonly>
+                        </div>
+                        <div class="result-item">
+                            <label>需要的支腿数量:</label>
+                            <input type="number" id="dchain_legCount" readonly>
+                        </div>
+                        <div class="result-item">
+                            <label>需要的链条长度:</label>
+                            <input type="number" id="dchain_chainLength" readonly>
+                        </div>
+                        <div class="result-item">
+                            <label>需要的链罩长度:</label>
+                            <input type="number" id="dchain_chainCoverLength" readonly>
+                        </div>
+                        <div class="result-item">
+                            <label>需要的护栏长度:</label>
+                            <input type="number" id="dchain_railLength" readonly>
+                        </div>
+                        <div class="result-item">
+                            <label>需要的扣板数量:</label>
+                            <input type="number" id="dchain_plateCount" readonly>
+                        </div>
+                    </div>
+                    <div class="apply-button-container">
+                        <button id="dchain_applyToTable" onclick="applyDChainToTable()">应用到报价表</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="tab4" class="tab-content">
+            <h2>链条机报价计算</h2>
+            <div class="flex-container">
+                <div class="price-table-container">
+                    <div class="chain-calculator">
+                        <div class="radio-group">
+                            <input type="radio" id="chain_double" name="chainType" value="double" checked onchange="calculateChainAccessories()">
+                            <label for="chain_double">双排链条机</label>
+                            <input type="radio" id="chain_triple" name="chainType" value="triple" onchange="calculateChainAccessories()">
+                            <label for="chain_triple">三排链条机</label>
+                        </div>
+                        <div class="input-groups">
+                            <div class="input-group">
+                                <label>链条机长度 (mm):</label>
+                                <input type="number" id="chain_length" onchange="calculateChainAccessories()" class="no-spinner">
+                            </div>
+                            <div class="input-group">
+                                <label>支腿数量:</label>
+                                <input type="number" id="chain_legCount" class="no-spinner" onchange="calculateChainAccessories()">
+                            </div>
+                            <div class="input-group">
+                                <label>机架单价:</label>
+                                <input type="number" id="chain_framePrice" class="no-spinner" onchange="calculateChainAccessories()">
+                            </div>
+                            <div class="input-group">
+                                <label>支腿单价:</label>
+                                <input type="number" id="chain_legPrice" value="0.00" onchange="calculateChainAccessories()" class="no-spinner">
+                            </div>
+                            <div class="input-group">
+                                <label>驱动架单价:</label>
+                                <input type="number" id="chain_driveFramePrice" class="no-spinner" onchange="calculateChainAccessories()">
+                            </div>
+                            <div class="input-group">
+                                <label>利润数值:</label>
+                                <input type="number" id="chain_profitRate" value="1.32" onchange="calculateChainAccessories()" class="no-spinner">
+                            </div>
+                        </div>
+                        <div class="result-prices">
+                            <div class="result-price-item">
+                                <label>成本价格:</label>
+                                <input type="number" id="chain_costPrice" readonly class="no-spinner">
+                            </div>
+                            <div class="result-price-item">
+                                <label>含税最终报价:</label>
+                                <input type="number" id="chain_finalPrice" readonly class="no-spinner">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accessories-calculator">
+                    <h3>封板选项</h3>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="chain_addPlate" onchange="calculateChainAccessories()">
+                        <label for="chain_addPlate">加入封板</label>
+                    </div>
+                    <div class="input-group">
+                        <label>链条机宽度 (mm):</label>
+                        <input type="number" id="chain_width" onchange="calculateChainAccessories()" class="no-spinner">
+                    </div>
+                    <div class="input-group">
+                        <label>封板厚度 (mm):</label>
+                        <input type="number" id="chain_plateThickness" value="1.5" onchange="calculateChainAccessories()" class="no-spinner">
+                    </div>
+                    <div class="input-group">
+                        <label>板材密度:</label>
+                        <input type="number" id="chain_plateDensity" value="7.85" onchange="calculateChainAccessories()" class="no-spinner">
+                    </div>
+                    <div class="input-group">
+                        <label>板材价格:</label>
+                        <input type="number" id="chain_platePrice" value="10.00" onchange="calculateChainAccessories()" class="no-spinner">
+                    </div>
+                    <div class="result-item">
+                        <label>板材成本价格:</label>
+                        <input type="number" id="chain_plateCostPrice" readonly class="no-spinner">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="tab5" class="tab-content">
+            <h2>皮带输送机报价计算</h2>
+            <div class="flex-container">
+                <div class="price-table-container">
+                    <table id="beltTable">
+                        <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>名称</th>
+                                <th>数量</th>
+                                <th>价格</th>
+                                <th>总计</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>机架</td>
+                                <td><input type="number" step="0.001" value="0.000" id="belt_quantity1" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="65.00" id="belt_price1" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><span id="belt_total1">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>支腿</td>
+                                <td><input type="number" step="0.001" value="0.000" id="belt_quantity2" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="130.00" id="belt_price2" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><span id="belt_total2">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>托板</td>
+                                <td><input type="number" step="0.001" value="1.000" id="belt_quantity3" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="0.00" id="belt_price3" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><span id="belt_total3">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>驱动辊</td>
+                                <td><input type="number" step="0.001" value="1.000" id="belt_quantity4" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="0.00" id="belt_price4" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><span id="belt_total4">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>涨紧装置</td>
+                                <td><input type="number" step="0.001" value="0.000" id="belt_quantity5" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="370.00" id="belt_price5" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><span id="belt_total5">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>涨紧辊筒</td>
+                                <td><input type="number" step="0.001" value="2.000" id="belt_quantity6" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="130.00" id="belt_price6" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><span id="belt_total6">260.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>改向辊</td>
+                                <td><input type="number" step="0.001" value="2.000" id="belt_quantity7" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="130.00" id="belt_price7" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><span id="belt_total7">260.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>驱动架+轴承座2</td>
+                                <td><input type="number" step="0.001" value="1.000" id="belt_quantity8" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="350.00" id="belt_price8" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><span id="belt_total8">350.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>皮带</td>
+                                <td><input type="number" step="0.001" value="1.000" id="belt_quantity9" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="0.00" id="belt_price9" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><span id="belt_total9">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>护栏</td>
+                                <td><input type="number" step="0.001" value="0.000" id="belt_quantity10" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="60.00" id="belt_price10" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><span id="belt_total10">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td>挡板</td>
+                                <td><input type="number" step="0.001" value="0.000" id="belt_quantity11" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="90.00" id="belt_price11" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><span id="belt_total11">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>12</td>
+                                <td>上 下托辊</td>
+                                <td><input type="number" step="0.001" value="2.000" id="belt_quantity12" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="30.00" id="belt_price12" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><span id="belt_total12">60.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>13</td>
+                                <td>电机链轮</td>
+                                <td><input type="number" step="0.001" value="1.000" id="belt_quantity13" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="50.00" id="belt_price13" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><span id="belt_total13">50.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>14</td>
+                                <td>驱动链轮</td>
+                                <td><input type="number" step="0.001" value="1.000" id="belt_quantity14" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="50.00" id="belt_price14" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><span id="belt_total14">50.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>15</td>
+                                <td>链条</td>
+                                <td><input type="number" step="0.001" value="1.000" id="belt_quantity15" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="80.00" id="belt_price15" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><span id="belt_total15">80.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>16</td>
+                                <td>防护罩</td>
+                                <td><input type="number" step="0.001" value="2.000" id="belt_quantity16" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="150.00" id="belt_price16" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><span id="belt_total16">300.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>17</td>
+                                <td>头架</td>
+                                <td><input type="number" step="0.001" value="0.000" id="belt_quantity17" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="18.00" id="belt_price17" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><span id="belt_total17">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>18</td>
+                                <td>标准件</td>
+                                <td><input type="number" step="0.001" value="1.000" id="belt_quantity19" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="100.00" id="belt_price19" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><span id="belt_total19">100.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>19</td>
+                                <td>工时费</td>
+                                <td><input type="number" step="0.001" value="1.000" id="belt_quantity20" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="100.00" id="belt_price20" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><span id="belt_total20">100.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>20</td>
+                                <td>其他</td>
+                                <td><input type="number" step="0.001" value="0.000" id="belt_quantity21" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="0.00" id="belt_price21" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><span id="belt_total21">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>21</td>
+                                <td>其他</td>
+                                <td><input type="number" step="0.001" value="0.000" id="belt_quantity18" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="0.00" id="belt_price18" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><span id="belt_total18">0.000</span></td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>22</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><span id="belt_empty"></span></td>
+                            </tr>
+                            <tr>
+                                <td>23</td>
+                                <td>合计</td>
+                                <td></td>
+                                <td></td>
+                                <td><span id="belt_subtotal">1610.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>24</td>
+                                <td>最终报价</td>
+                                <td></td>
+                                <td><input type="number" step="0.01" value="1.32" id="belt_finalRate" onchange="calculateBeltTotal()" class="no-spinner"></td>
+                                <td><span id="belt_finalTotal">2125.200</span></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                
+                <div class="accessories-calculator">
+                    <h3>辅件计算器</h3>
+                    <div class="input-group">
+                        <label>皮带式输送机的长度 (mm):</label>
+                        <input type="number" id="belt_conveyorLength" onchange="calculateBeltAccessories()" class="no-spinner">
+                    </div>
+                    <div class="input-group">
+                        <label>皮带式输送机的宽度 (mm):</label>
+                        <input type="number" id="belt_conveyorWidth" onchange="calculateBeltAccessories()" class="no-spinner">
+                    </div>
+                    <div class="calculator-row">
+                        <div class="input-group">
+                            <label>托板的计算系数:</label>
+                            <input type="number" id="belt_plateDensity" value="7.85" onchange="calculateBeltAccessories()" class="no-spinner">
+                        </div>
+                        <div class="input-group">
+                            <label>托板的计算厚度:</label>
+                            <input type="number" id="belt_plateThickness" value="1.5" onchange="calculateBeltAccessories()" class="no-spinner">
+                        </div>
+                        <div class="input-group">
+                            <label>托板的计算单价:</label>
+                            <input type="number" id="belt_plateCalcPrice" value="10" onchange="calculateBeltAccessories()" class="no-spinner">
+                        </div>
+                        <div class="input-group">
+                            <label>皮带的计算单价:</label>
+                            <input type="number" id="belt_beltUnitPrice" value="110" onchange="calculateBeltAccessories()" class="no-spinner">
+                        </div>
+                    </div>
+                    <div class="results">
+                        <div class="result-item">
+                            <label>需要的机架长度:</label>
+                            <input type="number" id="belt_frameLength" readonly>
+                        </div>
+                        <div class="result-item">
+                            <label>需要的支腿数量:</label>
+                            <input type="number" id="belt_legCount" readonly>
+                        </div>
+                        <div class="result-item">
+                            <label>需要的托板价格:</label>
+                            <input type="number" id="belt_platePrice" readonly>
+                        </div>
+                        <div class="result-item">
+                            <label>需要的皮带价格:</label>
+                            <input type="number" id="belt_beltPrice" readonly>
+                        </div>
+                        <div class="result-item">
+                            <label>需要的护栏长度:</label>
+                            <input type="number" id="belt_railLength" readonly>
+                        </div>
+                        <div class="result-item" style="display: none;">
+                            <label>张紧装置数量:</label>
+                            <input type="number" id="belt_tensionerCount" readonly>
+                        </div>
+                    </div>
+                    <div class="apply-button-container">
+                        <button id="belt_applyToTable" onclick="applyBeltToTable()">应用到报价表</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="tab6" class="tab-content">
+            <h2>弯道机报价计算</h2>
+            <div class="flex-container">
+                <div class="price-table-container">
+                    <table id="curveTable">
+                        <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>名称</th>
+                                <th>数量</th>
+                                <th>价格</th>
+                                <th>总计</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>机架</td>
+                                <td><input type="number" step="0.001" value="0.000" id="curve_quantity1" onchange="calculateCurveTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="95.00" id="curve_price1" onchange="calculateCurveTotal()" class="no-spinner"></td>
+                                <td><span id="curve_total1">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>辊筒</td>
+                                <td><input type="number" step="0.001" value="0.000" id="curve_quantity2" onchange="calculateCurveTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="0.00" id="curve_price2" onchange="calculateCurveTotal()" class="no-spinner"></td>
+                                <td><span id="curve_total2">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>支腿</td>
+                                <td><input type="number" step="0.001" value="0.000" id="curve_quantity3" onchange="calculateCurveTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="130.00" id="curve_price3" onchange="calculateCurveTotal()" class="no-spinner"></td>
+                                <td><span id="curve_total3">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>链罩</td>
+                                <td><input type="number" step="0.001" value="0.000" id="curve_quantity4" onchange="calculateCurveTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="45.00" id="curve_price4" onchange="calculateCurveTotal()" class="no-spinner"></td>
+                                <td><span id="curve_total4">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>驱动架</td>
+                                <td><input type="number" step="0.001" value="1.000" id="curve_quantity5" onchange="calculateCurveTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="200.00" id="curve_price5" onchange="calculateCurveTotal()" class="no-spinner"></td>
+                                <td><span id="curve_total5">200.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>护栏</td>
+                                <td><input type="number" step="0.001" value="0.000" id="curve_quantity6" onchange="calculateCurveTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="50.00" id="curve_price6" onchange="calculateCurveTotal()" class="no-spinner"></td>
+                                <td><span id="curve_total6">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>电机链轮</td>
+                                <td><input type="number" step="0.001" value="1.000" id="curve_quantity7" onchange="calculateCurveTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="60.00" id="curve_price7" onchange="calculateCurveTotal()" class="no-spinner"></td>
+                                <td><span id="curve_total7">60.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>链条</td>
+                                <td><input type="number" step="0.001" value="0.000" id="curve_quantity8" onchange="calculateCurveTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="15.00" id="curve_price8" onchange="calculateCurveTotal()" class="no-spinner"></td>
+                                <td><span id="curve_total8">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>下拉杆</td>
+                                <td><input type="number" step="0.001" value="0.000" id="curve_quantity9" onchange="calculateCurveTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="45.00" id="curve_price9" onchange="calculateCurveTotal()" class="no-spinner"></td>
+                                <td><span id="curve_total9">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>标准件</td>
+                                <td><input type="number" step="0.001" value="1.000" id="curve_quantity10" onchange="calculateCurveTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="50.00" id="curve_price10" onchange="calculateCurveTotal()" class="no-spinner"></td>
+                                <td><span id="curve_total10">50.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td>工时费</td>
+                                <td><input type="number" step="0.001" value="1.000" id="curve_quantity11" onchange="calculateCurveTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="150.00" id="curve_price11" onchange="calculateCurveTotal()" class="no-spinner"></td>
+                                <td><span id="curve_total11">150.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>12</td>
+                                <td>扣板</td>
+                                <td><input type="number" step="0.001" value="0.000" id="curve_quantity12" onchange="calculateCurveTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="0.00" id="curve_price12" onchange="calculateCurveTotal()" class="no-spinner"></td>
+                                <td><span id="curve_total12">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>13</td>
+                                <td>其他</td>
+                                <td><input type="number" step="0.001" value="0.000" id="curve_quantity13" onchange="calculateCurveTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="0.00" id="curve_price13" onchange="calculateCurveTotal()" class="no-spinner"></td>
+                                <td><span id="curve_total13">0.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>14</td>
+                                <td>其他</td>
+                                <td><input type="number" step="0.001" value="0.000" id="curve_quantity14" onchange="calculateCurveTotal()" class="no-spinner"></td>
+                                <td><input type="number" step="0.01" value="0.00" id="curve_price14" onchange="calculateCurveTotal()" class="no-spinner"></td>
+                                <td><span id="curve_total14">0.000</span></td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>15</td>
+                                <td>合计</td>
+                                <td></td>
+                                <td></td>
+                                <td><span id="curve_subtotal">410.000</span></td>
+                            </tr>
+                            <tr>
+                                <td>16</td>
+                                <td>最终报价</td>
+                                <td></td>
+                                <td><input type="number" step="0.01" value="1.32" id="curve_finalRate" onchange="calculateCurveTotal()" class="no-spinner"></td>
+                                <td><span id="curve_finalTotal">541.200</span></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                
+                <div class="accessories-calculator">
+                    <h3>辅件计算器 - 90°内R</h3>
+                    <div class="input-group">
+                        <label>90°内R (mm):</label>
+                        <input type="number" id="curve_innerRadius" onchange="calculateCurveAccessories1()" class="no-spinner">
+                    </div>
+                    <div class="input-group">
+                        <label>有效宽 (mm):</label>
+                        <input type="number" id="curve_effectiveWidth" onchange="calculateCurveAccessories1()" class="no-spinner">
+                    </div>
+                    <div class="calculator-row">
+                        <div class="input-group">
+                            <label>需要的机架长度:</label>
+                            <input type="number" id="curve_frameLength1" readonly>
+                        </div>
+                        <div class="input-group">
+                            <label>需要的支腿数量:</label>
+                            <input type="number" id="curve_legCount1" readonly>
+                        </div>
+                    </div>
+                    <div class="calculator-row">
+                        <div class="input-group">
+                            <label>需要的辊筒数量:</label>
+                            <input type="number" id="curve_rollerCount1" readonly>
+                        </div>
+                        <div class="input-group">
+                            <label>需要的链条长度:</label>
+                            <input type="number" id="curve_chainLength1" readonly>
+                        </div>
+                    </div>
+                    <div class="calculator-row">
+                        <div class="input-group">
+                            <label>需要的链罩长度:</label>
+                            <input type="number" id="curve_chainCoverLength1" readonly>
+                        </div>
+                        <div class="input-group">
+                            <label>需要的护栏长度:</label>
+                            <input type="number" id="curve_railLength1" readonly>
+                        </div>
+                    </div>
+                    <div class="apply-button-container">
+                        <button id="curve_applyToTable1" onclick="applyCurveToTable1()">应用到表格</button>
+                    </div>
+                </div>
+                
+                <div class="accessories-calculator">
+                    <h3>辅件计算器 - 60°内R</h3>
+                    <div class="input-group">
+                        <label>60°内R (mm):</label>
+                        <input type="number" id="curve_innerRadius2" onchange="calculateCurveAccessories2()" class="no-spinner">
+                    </div>
+                    <div class="input-group">
+                        <label>有效宽 (mm):</label>
+                        <input type="number" id="curve_effectiveWidth2" onchange="calculateCurveAccessories2()" class="no-spinner">
+                    </div>
+                    <div class="calculator-row">
+                        <div class="input-group">
+                            <label>需要的机架长度:</label>
+                            <input type="number" id="curve_frameLength2" readonly>
+                        </div>
+                        <div class="input-group">
+                            <label>需要的支腿数量:</label>
+                            <input type="number" id="curve_legCount2" readonly>
+                        </div>
+                    </div>
+                    <div class="calculator-row">
+                        <div class="input-group">
+                            <label>需要的辊筒数量:</label>
+                            <input type="number" id="curve_rollerCount2" readonly>
+                        </div>
+                        <div class="input-group">
+                            <label>需要的链条长度:</label>
+                            <input type="number" id="curve_chainLength2" readonly>
+                        </div>
+                    </div>
+                    <div class="calculator-row">
+                        <div class="input-group">
+                            <label>需要的链罩长度:</label>
+                            <input type="number" id="curve_chainCoverLength2" readonly>
+                        </div>
+                        <div class="input-group">
+                            <label>需要的护栏长度:</label>
+                            <input type="number" id="curve_railLength2" readonly>
+                        </div>
+                    </div>
+                    <div class="apply-button-container">
+                        <button id="curve_applyToTable2" onclick="applyCurveToTable2()">应用到表格</button>
+                    </div>
+                </div>
+                
+                <div class="accessories-calculator">
+                    <h3>辅件计算器 - 30°内R</h3>
+                    <div class="input-group">
+                        <label>30°内R (mm):</label>
+                        <input type="number" id="curve_innerRadius3" onchange="calculateCurveAccessories3()" class="no-spinner">
+                    </div>
+                    <div class="input-group">
+                        <label>有效宽 (mm):</label>
+                        <input type="number" id="curve_effectiveWidth3" onchange="calculateCurveAccessories3()" class="no-spinner">
+                    </div>
+                    <div class="calculator-row">
+                        <div class="input-group">
+                            <label>需要的机架长度:</label>
+                            <input type="number" id="curve_frameLength3" readonly>
+                        </div>
+                        <div class="input-group">
+                            <label>需要的支腿数量:</label>
+                            <input type="number" id="curve_legCount3" readonly>
+                        </div>
+                    </div>
+                    <div class="calculator-row">
+                        <div class="input-group">
+                            <label>需要的辊筒数量:</label>
+                            <input type="number" id="curve_rollerCount3" readonly>
+                        </div>
+                        <div class="input-group">
+                            <label>需要的链条长度:</label>
+                            <input type="number" id="curve_chainLength3" readonly>
+                        </div>
+                    </div>
+                    <div class="calculator-row">
+                        <div class="input-group">
+                            <label>需要的链罩长度:</label>
+                            <input type="number" id="curve_chainCoverLength3" readonly>
+                        </div>
+                        <div class="input-group">
+                            <label>需要的护栏长度:</label>
+                            <input type="number" id="curve_railLength3" readonly>
+                        </div>
+                    </div>
+                    <div class="apply-button-container">
+                        <button id="curve_applyToTable3" onclick="applyCurveToTable3()">应用到表格</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="tab7" class="tab-content">
+            <h2>辅助工具</h2>
+            <div class="flex-container">
+                <div class="price-table-container">
+                    <p>辅助工具功能将在这里实现...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html> 
